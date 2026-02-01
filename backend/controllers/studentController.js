@@ -43,7 +43,6 @@ exports.admitLead = async (req, res) => {
             req.params.id,
             {
                 isAdmitted: true,
-                reply: 'Enrolled',
                 ...req.body
             },
             { new: true }
