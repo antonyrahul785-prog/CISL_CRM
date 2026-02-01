@@ -6,11 +6,19 @@ const connectDB = require('./config/db');
 // Load environment variables
 dotenv.config();
 
-// Connect to database
-connectDB();
-
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Middleware to ensure DB connection
+app.use(async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (err) {
+        console.error('Database connection failed:', err);
+        res.status(500).json({ status: 'error', message: 'Database connection failed' });
+    }
+});
 
 // Middleware
 app.use(cors());
