@@ -1,0 +1,71 @@
+# CISL - Student Management System
+
+A full-stack student management system with a React frontend and Express/MongoDB backend.
+
+## Project Structure
+
+```text
+cisl/
+├── backend/                # Express backend
+│   ├── config/             # Configuration files (DB connection, etc.)
+│   ├── controllers/        # Route controllers (MVC pattern)
+│   ├── models/             # Mongoose models
+│   ├── routes/             # Express routes
+│   ├── scripts/            # Database seeding and utility scripts
+│   ├── server.js           # Server entry point
+│   └── package.json        # Backend dependencies
+├── frontend/               # React frontend
+│   ├── src/
+│   │   ├── components/     # Reusable UI components
+│   │   ├── pages/          # Page components
+│   │   ├── api.js          # API service layer
+│   │   ├── App.jsx         # Main application component
+│   │   └── main.jsx        # Frontend entry point
+│   ├── index.html          # HTML template
+│   ├── tailwind.config.js  # Tailwind CSS configuration
+│   └── package.json        # Frontend dependencies
+└── README.md               # Project documentation
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- MongoDB
+
+### Installation
+
+1. Clone the repository.
+2. Install backend dependencies:
+   ```bash
+   cd backend
+   npm install
+   ```
+3. Install frontend dependencies:
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+### Running the Application
+
+1. Start the backend:
+   ```bash
+   cd backend
+   npm run dev
+   ```
+2. Start the frontend:
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+### Seeding Data
+
+To seed the database with initial admin and course data:
+```bash
+cd backend
+npm run seed:admin
+npm run seed:courses
+```
