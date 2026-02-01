@@ -21,16 +21,19 @@ const Layout = () => {
             <Sidebar
                 isOpen={isSidebarOpen}
                 onClose={() => setIsSidebarOpen(false)}
+                theme={theme}
+                onToggleTheme={toggleTheme}
             />
 
             <div className="flex-1 flex flex-col overflow-hidden relative lg:ml-72">
                 {/* Mobile Header */}
-                <div className="lg:hidden fixed top-0 w-full bg-[#0d1210]/80 backdrop-blur-md z-40 border-b border-white/5 px-6 py-4 flex items-center justify-between">
-                    {/* <h1 className="text-xl font-black text-white tracking-tighter">CISL</h1> */}
-                    <img src={cisllogo} className='w-20 h-20 border rounded-full' alt="cisllogo" />
+                <div className="lg:hidden fixed top-0 w-full bg-[var(--bg-card)]/80 backdrop-blur-md z-40 border-b border-[var(--border)] px-6 py-3 flex items-center justify-between">
+                    <div className={`p-1.5 rounded-full transition-all duration-300 ${theme === 'light' ? 'bg-[#0d1210] shadow-lg border border-slate-200' : ''}`}>
+                        <img src={cisllogo} className={`${theme === 'light' ? 'w-12 h-12' : 'w-16 h-16'} border rounded-full object-contain transition-all duration-300`} alt="cisllogo" />
+                    </div>
                     <button
                         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                        className="p-2 rounded-xl bg-white/5 text-slate-400 hover:bg-white/10 transition-colors"
+                        className="p-2 rounded-xl bg-[var(--bg-surface)] text-[var(--text-muted)] hover:bg-[var(--bg-card)] transition-colors"
                     >
                         {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>

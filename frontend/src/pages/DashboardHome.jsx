@@ -181,7 +181,7 @@ const DashboardHome = () => {
                 <div className="flex items-center gap-3">
                     <button
                         onClick={toggleTheme}
-                        className="p-2.5 rounded-xl bg-white/5 text-[var(--text-muted)] hover:bg-white/10 hover:text-[var(--text-main)] transition-all border border-white/5"
+                        className="p-2.5 rounded-xl bg-[var(--bg-surface)] text-[var(--text-muted)] hover:bg-[var(--bg-card)] hover:text-[var(--text-main)] transition-all border border-[var(--border)]"
                         title="Toggle Theme"
                     >
                         {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
@@ -191,12 +191,12 @@ const DashboardHome = () => {
                         <input
                             type="text"
                             placeholder="Quick search..."
-                            className="bg-white/5 border border-white/10 rounded-xl pl-9 pr-4 py-2 text-sm text-[var(--text-main)] focus:outline-none focus:border-emerald-500/50 transition-all w-48"
+                            className="bg-[var(--bg-surface)] border border-[var(--border)] rounded-xl pl-9 pr-4 py-2 text-sm text-[var(--text-main)] focus:outline-none focus:border-emerald-500/50 transition-all w-48"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </div>
-                    <button onClick={exportData} className="p-2.5 rounded-xl bg-white/5 text-[var(--text-muted)] hover:text-emerald-500 hover:bg-emerald-500/10 transition-all border border-white/5 flex items-center gap-2">
+                    <button onClick={exportData} className="p-2.5 rounded-xl bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-emerald-500 hover:bg-emerald-500/10 transition-all border border-[var(--border)] flex items-center gap-2">
                         <Download className="w-5 h-5" />
                         <span className="text-xs font-bold hidden lg:inline">Export CSV</span>
                     </button>
@@ -212,10 +212,10 @@ const DashboardHome = () => {
                 {statCards.map((stat, index) => (
                     <div key={index} onClick={() => stat.path && navigate(stat.path, { state: stat.state })} className="glass-card p-6 flex flex-col justify-between group cursor-pointer relative overflow-hidden">
                         <div className="flex items-start justify-between mb-4">
-                            <div className="p-3 rounded-xl bg-white/5 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-black transition-all duration-300">
+                            <div className="p-3 rounded-xl bg-[var(--bg-surface)] text-emerald-500 group-hover:bg-emerald-500 group-hover:text-black transition-all duration-300 border border-[var(--border)]">
                                 <stat.icon className="w-6 h-6" />
                             </div>
-                            <span className={`text-[11px] font-black px-2 py-1 rounded-lg ${stat.change.includes('+') ? 'bg-emerald-500/10 text-emerald-500' : 'bg-white/10 text-[var(--text-main)]/60'}`}>
+                            <span className={`text-[11px] font-black px-2 py-1 rounded-lg ${stat.change.includes('+') ? 'bg-emerald-500/10 text-emerald-500' : 'bg-[var(--bg-surface)] text-[var(--text-main)]/60 border border-[var(--border)]'}`}>
                                 {stat.change}
                             </span>
                         </div>
@@ -238,12 +238,12 @@ const DashboardHome = () => {
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
                         {stats.statusBreakdown.map((item, idx) => (
-                            <div key={idx} className="p-4 rounded-2xl bg-white/2 border border-white/5 hover:bg-white/5 transition-colors cursor-pointer" onClick={() => navigate('/leads', { state: { activeTab: item._id } })}>
+                            <div key={idx} className="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border)] hover:bg-[var(--bg-card)] transition-colors cursor-pointer" onClick={() => navigate('/leads', { state: { activeTab: item._id } })}>
                                 <p className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest mb-1">
                                     {item._id === 'Interested' ? 'Interested Leads' : (item._id || 'UNSET')}
                                 </p>
                                 <p className="text-2xl font-black text-[var(--text-main)]">{item.count}</p>
-                                <div className="w-full bg-white/5 h-1 mt-3 rounded-full overflow-hidden">
+                                <div className="w-full bg-[var(--bg-main)] h-1 mt-3 rounded-full overflow-hidden border border-[var(--border)]">
                                     <div
                                         className="bg-emerald-500 h-full rounded-full transition-all duration-1000"
                                         style={{ width: `${(item.count / (stats.totalStudents || 1)) * 100}%` }}
@@ -261,7 +261,7 @@ const DashboardHome = () => {
                     </h3>
                     <div className="flex flex-wrap gap-2 overflow-y-auto max-h-[160px] pr-2 custom-scrollbar">
                         {facilitiesList.length > 0 ? facilitiesList.map((course, idx) => (
-                            <span key={idx} className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-[11px] font-bold text-[var(--text-muted)] hover:text-[var(--text-main)] hover:border-emerald-500/30 transition-all cursor-pointer">
+                            <span key={idx} className="px-3 py-1.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--border)] text-[11px] font-bold text-[var(--text-muted)] hover:text-[var(--text-main)] hover:border-emerald-500/30 transition-all cursor-pointer">
                                 {course}
                             </span>
                         )) : (
@@ -311,7 +311,7 @@ const DashboardHome = () => {
                     </div>
                     <div className="space-y-4">
                         {upcomingReminders.length > 0 ? upcomingReminders.map((rem, idx) => (
-                            <div key={idx} className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-emerald-500/30 transition-all cursor-pointer group" onClick={() => navigate('/leads')}>
+                            <div key={idx} className="p-4 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border)] hover:border-emerald-500/30 transition-all cursor-pointer group" onClick={() => navigate('/leads')}>
                                 <div className="flex justify-between items-start mb-2">
                                     <h4 className="text-sm font-bold text-[var(--text-main)] truncate group-hover:text-emerald-500 transition-colors">{rem.name}</h4>
                                     <span className="text-[10px] font-black text-rose-500 bg-rose-500/10 px-2 py-0.5 rounded-lg whitespace-nowrap">
@@ -386,7 +386,7 @@ const DashboardHome = () => {
                                     dataKey="name"
                                     axisLine={false}
                                     tickLine={false}
-                                    tick={{ fill: '#94a3b8', fontSize: 11, fontWeight: 700 }}
+                                    tick={{ fill: 'var(--text-muted)', fontSize: 11, fontWeight: 700 }}
                                     dy={10}
                                     interval={0}
                                     tickFormatter={(val) => {
@@ -405,12 +405,17 @@ const DashboardHome = () => {
                                 <YAxis hide={true} />
                                 <Tooltip
                                     cursor={{ fill: 'transparent' }}
-                                    contentStyle={{ backgroundColor: '#121816', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-                                    itemStyle={{ color: '#fff', fontSize: '12px' }}
+                                    contentStyle={{
+                                        backgroundColor: 'var(--bg-card)',
+                                        border: '1px solid var(--border)',
+                                        borderRadius: '12px',
+                                        color: 'var(--text-main)'
+                                    }}
+                                    itemStyle={{ color: 'var(--text-main)', fontSize: '12px' }}
                                 />
                                 <Bar dataKey="count" radius={[50, 50, 50, 50]} barSize={40}>
                                     {courseData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={index === 0 ? '#10b981' : '#1e293b'} style={{ transition: 'all 0.3s ease' }} className="hover:opacity-80" />
+                                        <Cell key={`cell-${index}`} fill={index === 0 ? '#10b981' : 'var(--bg-surface)'} stroke="var(--border)" style={{ transition: 'all 0.3s ease' }} className="hover:opacity-80" />
                                     ))}
                                 </Bar>
                             </BarChart>
@@ -470,7 +475,7 @@ const DashboardHome = () => {
             <Modal isOpen={isViewModalOpen} onClose={() => setIsViewModalOpen(false)} title="Data Point Details">
                 {selectedStudent && (
                     <div className="space-y-6">
-                        <div className="p-6 rounded-3xl bg-white/5 border border-white/5">
+                        <div className="p-6 rounded-3xl bg-[var(--bg-surface)] border border-[var(--border)]">
                             <div className="flex justify-between items-start mb-6">
                                 <div>
                                     <h3 className="text-2xl font-black text-[var(--text-main)]">{selectedStudent.name}</h3>

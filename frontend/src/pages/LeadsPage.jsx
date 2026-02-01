@@ -194,19 +194,19 @@ const LeadsPage = () => {
             {/* Header section */}
             <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 <div>
-                    <h1 className="text-4xl font-black text-white tracking-tight">Leads</h1>
-                    <p className="text-slate-500 text-sm mt-1 font-medium">Manage student records and engagement status.</p>
+                    <h1 className="text-4xl font-black text-[var(--text-main)] tracking-tight">Leads</h1>
+                    <p className="text-[var(--text-muted)] text-sm mt-1 font-medium">Manage student records and engagement status.</p>
                 </div>
             </div>
 
             {/* Filters Bar */}
-            <div className="bg-[#131b18] p-4 rounded-3xl border border-white/5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div className="bg-[var(--bg-card)] p-4 rounded-3xl border border-[var(--border)] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                 <div className="relative flex-1 max-w-md">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4" />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] w-4 h-4" />
                     <input
                         type="text"
                         placeholder="Search leads..."
-                        className="w-full bg-[#0a0f0d] border border-white/5 rounded-2xl pl-12 pr-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/30 transition-all"
+                        className="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-2xl pl-12 pr-4 py-3 text-sm text-[var(--text-main)] focus:outline-none focus:border-emerald-500/30 transition-all"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
@@ -217,18 +217,18 @@ const LeadsPage = () => {
                         <select
                             value={courseFilter}
                             onChange={(e) => setCourseFilter(e.target.value)}
-                            className="appearance-none px-4 py-3 bg-[#0a0f0d] border border-white/5 rounded-2xl text-slate-300 text-sm font-bold flex items-center gap-2 hover:border-white/10 pr-10 focus:outline-none cursor-pointer"
+                            className="appearance-none px-4 py-3 bg-[var(--bg-main)] border border-[var(--border)] rounded-2xl text-[var(--text-muted)] text-sm font-bold flex items-center gap-2 hover:border-[var(--border)] pr-10 focus:outline-none cursor-pointer"
                         >
                             {filterCourseOptions.map(course => (
                                 <option key={course} value={course}>{course}</option>
                             ))}
                         </select>
-                        <Filter className="w-4 h-4 text-slate-500 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+                        <Filter className="w-4 h-4 text-[var(--text-muted)] absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none" />
                     </div>
 
                     <button
                         onClick={() => setDateFilter(dateFilter === 'This Month' ? 'All Time' : 'This Month')}
-                        className={`px-4 py-3 border rounded-2xl text-sm font-bold flex items-center gap-2 transition-all whitespace-nowrap ${dateFilter === 'This Month' ? 'bg-emerald-500/10 border-emerald-500 text-emerald-500' : 'bg-[#0a0f0d] border-white/5 text-slate-300 hover:border-white/10'}`}
+                        className={`px-4 py-3 border rounded-2xl text-sm font-bold flex items-center gap-2 transition-all whitespace-nowrap ${dateFilter === 'This Month' ? 'bg-emerald-500/10 border-emerald-500 text-emerald-500' : 'bg-[var(--bg-main)] border-[var(--border)] text-[var(--text-muted)] hover:border-[var(--border)]'}`}
                     >
                         {dateFilter === 'This Month' ? 'This Month' : 'All Time'}
                         <Calendar className="w-4 h-4" />
@@ -249,10 +249,10 @@ const LeadsPage = () => {
                         <button
                             key={category}
                             onClick={() => setActiveTab(category)}
-                            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wide whitespace-nowrap transition-all flex items-center gap-2 ${activeTab === category ? 'bg-emerald-500 text-black font-black shadow-[0_0_15px_rgba(16,185,129,0.2)]' : 'bg-[#131b18] border border-white/5 text-slate-400 hover:text-white hover:border-white/10'}`}
+                            className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wide whitespace-nowrap transition-all flex items-center gap-2 ${activeTab === category ? 'bg-emerald-500 text-black font-black shadow-[0_0_15px_rgba(16,185,129,0.2)]' : 'bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text-main)] hover:border-[var(--border)]'}`}
                         >
                             {category}
-                            <span className={`px-1.5 py-0.5 rounded-md text-[10px] ${activeTab === category ? 'bg-black/20 text-black' : 'bg-white/10 text-slate-300'}`}>
+                            <span className={`px-1.5 py-0.5 rounded-md text-[10px] ${activeTab === category ? 'bg-black/20 text-black' : 'bg-[var(--bg-main)] text-[var(--text-muted)]'}`}>
                                 {count}
                             </span>
                         </button>
@@ -283,18 +283,18 @@ const LeadsPage = () => {
                                     <td className="px-6 py-6">
                                         <div className="w-5 h-5 rounded-full border-2 border-white/10 group-hover:border-emerald-500/50 transition-all cursor-pointer" />
                                     </td>
-                                    <td className="px-6 py-6 text-sm font-bold text-slate-400">
+                                    <td className="px-6 py-6 text-sm font-bold text-[var(--text-muted)]">
                                         {student.createdAt ? new Date(student.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'N/A'}
                                     </td>
                                     <td className="px-6 py-6">
-                                        <span className="text-sm font-black text-white uppercase tracking-tight">{student.name || 'Unknown'}</span>
+                                        <span className="text-sm font-black text-[var(--text-main)] uppercase tracking-tight">{student.name || 'Unknown'}</span>
                                     </td>
 
-                                    <td className="px-6 py-6 text-sm font-bold text-slate-400 italic">{student.phone}</td>
-                                    <td className="px-6 py-6 text-sm font-bold text-slate-500">{student.email}</td>
+                                    <td className="px-6 py-6 text-sm font-bold text-[var(--text-muted)] italic">{student.phone}</td>
+                                    <td className="px-6 py-6 text-sm font-bold text-[var(--text-muted)]">{student.email}</td>
                                     <td className="px-6 py-6">
                                         <div className="flex items-center gap-4">
-                                            <span className="text-sm font-bold text-slate-400 max-w-[200px] truncate">
+                                            <span className="text-sm font-bold text-[var(--text-muted)] max-w-[200px] truncate">
                                                 {student.additionalInfo || 'No reply recorded...'}
                                             </span>
                                             <button
@@ -489,11 +489,11 @@ const LeadsPage = () => {
             <Modal isOpen={isAdmitModalOpen} onClose={() => setIsAdmitModalOpen(false)} title="Convert Lead to Student" maxWidth="max-w-2xl">
                 <form onSubmit={confirmAdmit} className="space-y-10 pb-4">
                     {/* Lead Info Header Card */}
-                    <div className="p-5 rounded-3xl bg-white/2 border border-white/5">
+                    <div className="p-5 rounded-3xl bg-[var(--bg-main)] border border-[var(--border)]">
                         <div>
-                            <h4 className="text-xl font-black text-white">{selectedStudent?.name}</h4>
+                            <h4 className="text-xl font-black text-[var(--text-main)]">{selectedStudent?.name}</h4>
                             <div className="flex items-center gap-2 mt-1">
-                                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Lead #{(selectedStudent?._id || '0000').slice(-4)}</span>
+                                <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest">Lead #{(selectedStudent?._id || '0000').slice(-4)}</span>
                                 <span className="px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-tighter">Ready to Join</span>
                             </div>
                         </div>
@@ -501,13 +501,13 @@ const LeadsPage = () => {
 
                     {/* Section: Course Information */}
                     <div className="space-y-6">
-                        <div className="flex items-center gap-2 border-b border-white/5 pb-4">
+                        <div className="flex items-center gap-2 border-b border-[var(--border)] pb-4">
                             <GraduationCap className="w-5 h-5 text-emerald-500" />
-                            <h4 className="text-sm font-black text-white uppercase tracking-widest">Course Information</h4>
+                            <h4 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest">Course Information</h4>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-slate-500 uppercase ml-1">Select Course</label>
+                                <label className="text-[10px] font-black text-[var(--text-muted)] uppercase ml-1">Select Course</label>
                                 <select
                                     className="input-field"
                                     value={admitData.course || selectedStudent?.course || ''}
@@ -519,7 +519,7 @@ const LeadsPage = () => {
                                 </select>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-slate-500 uppercase ml-1">Start Date</label>
+                                <label className="text-[10px] font-black text-[var(--text-muted)] uppercase ml-1">Start Date</label>
                                 <div className="relative">
                                     <input
                                         type="date"
@@ -536,13 +536,13 @@ const LeadsPage = () => {
 
                     {/* Section: Payment & Fees */}
                     <div className="space-y-6">
-                        <div className="flex items-center gap-2 border-b border-white/5 pb-4">
+                        <div className="flex items-center gap-2 border-b border-[var(--border)] pb-4">
                             <Banknote className="w-5 h-5 text-emerald-500" />
-                            <h4 className="text-sm font-black text-white uppercase tracking-widest">Payment & Fees</h4>
+                            <h4 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest">Payment & Fees</h4>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-slate-500 uppercase ml-1">Agreed Total Fee (₹)</label>
+                                <label className="text-[10px] font-black text-[var(--text-muted)] uppercase ml-1">Agreed Total Fee (₹)</label>
                                 <div className="relative">
                                     <input
                                         type="number"
@@ -556,7 +556,7 @@ const LeadsPage = () => {
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-slate-500 uppercase ml-1">Upfront Payment (₹)</label>
+                                <label className="text-[10px] font-black text-[var(--text-muted)] uppercase ml-1">Upfront Payment (₹)</label>
                                 <div className="relative">
                                     <input
                                         type="number"
@@ -572,13 +572,13 @@ const LeadsPage = () => {
 
                     {/* Section: Referral Program */}
                     <div className="space-y-6">
-                        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                        <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
                             <div className="flex items-center gap-2">
                                 <Sparkles className="w-5 h-5 text-emerald-500" />
-                                <h4 className="text-sm font-black text-white uppercase tracking-widest">Referral Program</h4>
+                                <h4 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest">Referral Program</h4>
                             </div>
                             <div className="flex items-center gap-3">
-                                <span className="text-[10px] font-bold text-slate-500 uppercase">Has Referral?</span>
+                                <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase">Has Referral?</span>
                                 <label className="relative inline-flex items-center cursor-pointer">
                                     <input type="checkbox" className="sr-only peer" checked={!!admitData.referredBy} onChange={(e) => setAdmitData({ ...admitData, referredBy: e.target.checked ? ' ' : '' })} />
                                     <div className="w-11 h-6 bg-white/5 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-400 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 peer-checked:after:bg-white border border-white/10"></div>
@@ -589,7 +589,7 @@ const LeadsPage = () => {
                         {(admitData.referredBy !== '') && (
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fadeIn">
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-black text-slate-500 uppercase ml-1">Referral Source</label>
+                                    <label className="text-[10px] font-black text-[var(--text-muted)] uppercase ml-1">Referral Source</label>
                                     <div className="relative">
                                         <input
                                             className="input-field pl-10"
@@ -597,11 +597,11 @@ const LeadsPage = () => {
                                             value={admitData.referredBy}
                                             onChange={(e) => setAdmitData({ ...admitData, referredBy: e.target.value })}
                                         />
-                                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--text-muted)]" />
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-black text-slate-500 uppercase ml-1">Bonus Credit (₹)</label>
+                                    <label className="text-[10px] font-black text-[var(--text-muted)] uppercase ml-1">Bonus Credit (₹)</label>
                                     <input
                                         type="number"
                                         className="input-field"
@@ -630,22 +630,22 @@ const LeadsPage = () => {
                 {selectedStudent && (
                     <div className="p-8 space-y-12 pb-6">
                         {/* Profile Header Block */}
-                        <div className="border-b border-white/5 pb-10">
+                        <div className="border-b border-[var(--border)] pb-10">
                             <div className="text-center md:text-left space-y-2">
                                 <div className="flex flex-col md:flex-row items-center gap-4">
-                                    <h2 className="text-4xl font-black text-white tracking-tight leading-none uppercase">{selectedStudent.name}</h2>
+                                    <h2 className="text-4xl font-black text-[var(--text-main)] tracking-tight leading-none uppercase">{selectedStudent.name}</h2>
                                     <span className="px-4 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-black uppercase tracking-widest border border-emerald-500/20 flex items-center gap-2">
                                         <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                                         Interested - Lead
                                     </span>
                                 </div>
-                                <p className="text-xl font-bold text-slate-500">{selectedStudent.course || 'Unassigned Course'} • Batch 2024</p>
+                                <p className="text-xl font-bold text-[var(--text-muted)]">{selectedStudent.course || 'Unassigned Course'} • Batch 2024</p>
                                 <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 pt-2">
-                                    <div className="flex items-center gap-2 text-slate-400 font-bold text-sm">
+                                    <div className="flex items-center gap-2 text-[var(--text-muted)] font-bold text-sm">
                                         <Calendar className="w-4 h-4 text-emerald-500" />
                                         Inquired {new Date(selectedStudent.createdAt).toLocaleDateString()}
                                     </div>
-                                    <div className="flex items-center gap-2 text-slate-400 font-bold text-sm">
+                                    <div className="flex items-center gap-2 text-[var(--text-muted)] font-bold text-sm">
                                         <MapPin className="w-4 h-4 text-emerald-500" />
                                         Location Unspecified
                                     </div>
@@ -657,21 +657,21 @@ const LeadsPage = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                             {/* Personal Information Column */}
                             <div className="space-y-8">
-                                <div className="flex items-center gap-3 border-b border-white/5 pb-4">
+                                <div className="flex items-center gap-3 border-b border-[var(--border)] pb-4">
                                     <Users className="w-5 h-5 text-emerald-500" />
-                                    <h4 className="text-sm font-black text-white uppercase tracking-widest">Personal Information</h4>
+                                    <h4 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest">Personal Information</h4>
                                 </div>
                                 <div className="space-y-6 pl-2">
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Email Address</label>
-                                        <p className="text-lg font-bold text-slate-300 italic">{selectedStudent.email}</p>
+                                        <label className="text-[11px] font-black text-[var(--text-muted)] uppercase tracking-widest">Email Address</label>
+                                        <p className="text-lg font-bold text-[var(--text-muted)] italic">{selectedStudent.email}</p>
                                     </div>
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Phone Number</label>
-                                        <p className="text-lg font-bold text-slate-300 italic font-mono tracking-tight">{selectedStudent.phone}</p>
+                                        <label className="text-[11px] font-black text-[var(--text-muted)] uppercase tracking-widest">Phone Number</label>
+                                        <p className="text-lg font-bold text-[var(--text-muted)] italic font-mono tracking-tight">{selectedStudent.phone}</p>
                                     </div>
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest">Course Name</label>
+                                        <label className="text-[11px] font-black text-[var(--text-muted)] uppercase tracking-widest">Course Name</label>
                                         <p className="text-lg font-bold text-emerald-500">{selectedStudent.course}</p>
                                     </div>
                                 </div>
@@ -680,37 +680,37 @@ const LeadsPage = () => {
                             {/* Financial & Referral Column */}
                             <div className="space-y-10">
                                 <div className="space-y-6">
-                                    <div className="flex items-center gap-3 border-b border-white/5 pb-4">
+                                    <div className="flex items-center gap-3 border-b border-[var(--border)] pb-4">
                                         <IndianRupee className="w-5 h-5 text-emerald-500" />
-                                        <h4 className="text-sm font-black text-white uppercase tracking-widest">Financial Details</h4>
+                                        <h4 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest">Financial Details</h4>
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
-                                        <div className="p-6 rounded-3xl bg-white/2 border border-white/5 hover:bg-white/[0.04] transition-colors">
-                                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Estimated Fee</p>
-                                            <p className="text-2xl font-black text-white">₹0.00</p>
+                                        <div className="p-6 rounded-3xl bg-[var(--bg-main)] border border-[var(--border)] hover:bg-[var(--bg-surface)] transition-colors">
+                                            <p className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest mb-2">Estimated Fee</p>
+                                            <p className="text-2xl font-black text-[var(--text-main)]">₹0.00</p>
                                         </div>
                                         <div className="p-6 rounded-3xl bg-emerald-500/5 border border-emerald-500/20">
                                             <div className="flex items-center justify-between mb-2">
                                                 <p className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Inquiry Stat</p>
                                                 <Activity className="w-3.5 h-3.5 text-emerald-500" />
                                             </div>
-                                            <p className="text-2xl font-black text-white uppercase tracking-tighter">{selectedStudent.reply}</p>
-                                            <span className="text-[10px] font-bold text-slate-500">(Pending)</span>
+                                            <p className="text-2xl font-black text-[var(--text-main)] uppercase tracking-tighter">{selectedStudent.reply}</p>
+                                            <span className="text-[10px] font-bold text-[var(--text-muted)]">(Pending)</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="space-y-6 pt-4">
-                                    <h4 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Referral Info</h4>
-                                    <div className="p-4 rounded-3xl bg-white/2 border border-white/5 flex items-center justify-between">
+                                    <h4 className="text-[11px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em]">Referral Info</h4>
+                                    <div className="p-4 rounded-3xl bg-[var(--bg-main)] border border-[var(--border)] flex items-center justify-between">
                                         <div className="flex items-center gap-3">
                                             <div>
-                                                <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Referred By</p>
-                                                <p className="text-sm font-bold text-white uppercase">Direct Inquiry</p>
+                                                <p className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest">Referred By</p>
+                                                <p className="text-sm font-bold text-[var(--text-main)] uppercase">Direct Inquiry</p>
                                             </div>
                                         </div>
                                         <div className="text-right">
-                                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Bonus</p>
+                                            <p className="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest">Bonus</p>
                                             <p className="text-sm font-black text-emerald-500 tracking-tighter">+₹0.00</p>
                                         </div>
                                     </div>

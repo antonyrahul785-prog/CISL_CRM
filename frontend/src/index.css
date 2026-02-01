@@ -55,11 +55,17 @@ body {
 }
 
 .btn-secondary {
-  @apply px-4 py-2 bg-white/5 border border-white/10 text-white rounded-xl font-semibold transition-all duration-300 cursor-pointer backdrop-blur-md;
+  @apply px-4 py-2 rounded-xl font-semibold transition-all duration-300 cursor-pointer backdrop-blur-md;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-main);
 }
 
 .input-field {
-  @apply w-full bg-black/40 border border-white/5 rounded-2xl px-5 py-3.5 text-white transition-all duration-300 backdrop-blur-xl;
+  @apply w-full rounded-2xl px-5 py-3.5 transition-all duration-300 backdrop-blur-xl;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-main);
   outline: none;
 }
 
@@ -76,6 +82,10 @@ body {
 
 .glass-card:hover {
   @apply border-emerald-500/20;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .glass-card:hover {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
@@ -90,7 +100,8 @@ body {
 }
 
 .sidebar-item:hover:not(.active) {
-  @apply bg-white/5 text-white;
+  background: var(--bg-surface);
+  color: var(--text-main);
 }
 
 /* Animations */
@@ -137,7 +148,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #2a3331;
+  background-color: var(--border);
   border-radius: 10px;
 }
 
@@ -155,11 +166,14 @@ body {
 }
 
 .custom-table tr:not(.header-row) {
-  @apply bg-white/[0.02] transition-all duration-300;
+  background: var(--bg-card);
+  @apply transition-all duration-300;
+  border: 1px solid var(--border);
 }
 
 .custom-table tr:not(.header-row) td {
   @apply px-6 py-4;
+  color: var(--text-main);
 }
 
 .custom-table tr:not(.header-row) td:first-child {
@@ -171,16 +185,19 @@ body {
 }
 
 .custom-table tr:not(.header-row):hover {
-  @apply bg-white/[0.05];
+  background: var(--bg-surface);
 }
 
 /* Chart Tooltip Overrides */
 .recharts-default-tooltip {
-  @apply !bg-[#1a2322] !border-none !rounded-xl !shadow-2xl !p-4 !backdrop-blur-md;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  @apply !rounded-xl !shadow-2xl !p-4 !backdrop-blur-md;
 }
 
 .recharts-tooltip-label {
-  @apply !text-white !font-bold !mb-2;
+  color: var(--text-main) !important;
+  @apply !font-bold !mb-2;
 }
 
 .recharts-tooltip-item {
@@ -189,5 +206,8 @@ body {
 
 /* Search Bar Hook */
 .search-bar {
-  @apply bg-[#151c1a] border border-white/5 rounded-full px-5 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all w-full;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  @apply rounded-full px-5 py-2.5 text-sm focus:outline-none focus:border-emerald-500/50 transition-all w-full;
 }

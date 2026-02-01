@@ -112,10 +112,10 @@ const LeadDetailPage = () => {
     if (error || !lead) {
         return (
             <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-4">
-                <p className="text-slate-400 font-bold">{error || "Lead not found."}</p>
+                <p className="text-[var(--text-muted)] font-bold">{error || "Lead not found."}</p>
                 <button
                     onClick={() => navigate('/leads')}
-                    className="px-6 py-2 bg-white/5 hover:bg-white/10 text-white rounded-xl transition-all"
+                    className="px-6 py-2 bg-[var(--bg-surface)] hover:bg-[var(--bg-card)] text-[var(--text-main)] rounded-xl transition-all border border-[var(--border)]"
                 >
                     Back to Leads
                 </button>
@@ -129,14 +129,14 @@ const LeadDetailPage = () => {
             <div className="flex items-center gap-4">
                 <button
                     onClick={() => navigate('/leads')}
-                    className="p-3 bg-white/5 border border-white/10 rounded-2xl text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+                    className="p-3 bg-[var(--bg-surface)] border border-[var(--border)] rounded-2xl text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-all"
                 >
                     <ArrowLeft className="w-5 h-5" />
                 </button>
                 <div className="flex-1 flex items-center justify-between">
                     <div>
-                        <h1 className="text-4xl font-black text-white tracking-tight uppercase">{lead.name}</h1>
-                        <p className="text-slate-500 text-sm mt-1 font-medium">Lead Details Viewer</p>
+                        <h1 className="text-4xl font-black text-[var(--text-main)] tracking-tight uppercase">{lead.name}</h1>
+                        <p className="text-[var(--text-muted)] text-sm mt-1 font-medium">Lead Details Viewer</p>
                     </div>
                 </div>
             </div>
@@ -150,18 +150,18 @@ const LeadDetailPage = () => {
                                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                                 {lead.reply || 'Interested'}
                             </span>
-                            <h2 className="text-3xl font-black text-white">{lead.name}</h2>
-                            <p className="text-slate-500 font-bold">{lead.course}</p>
+                            <h2 className="text-3xl font-black text-[var(--text-main)]">{lead.name}</h2>
+                            <p className="text-[var(--text-muted)] font-bold">{lead.course}</p>
                         </div>
 
-                        <div className="w-full pt-6 border-t border-white/5 space-y-4">
+                        <div className="w-full pt-6 border-t border-[var(--border)] space-y-4">
                             <div className="flex items-center justify-between text-sm">
-                                <span className="text-slate-500 font-bold uppercase text-[10px] tracking-widest">Inquired On</span>
-                                <span className="text-white font-bold">{new Date(lead.createdAt).toLocaleDateString()}</span>
+                                <span className="text-[var(--text-muted)] font-bold uppercase text-[10px] tracking-widest">Inquired On</span>
+                                <span className="text-[var(--text-main)] font-bold">{new Date(lead.createdAt).toLocaleDateString()}</span>
                             </div>
                             <div className="flex items-center justify-between text-sm">
-                                <span className="text-slate-500 font-bold uppercase text-[10px] tracking-widest">Lead ID</span>
-                                <span className="text-white font-bold">#{(lead._id).slice(-6).toUpperCase()}</span>
+                                <span className="text-[var(--text-muted)] font-bold uppercase text-[10px] tracking-widest">Lead ID</span>
+                                <span className="text-[var(--text-main)] font-bold">#{(lead._id).slice(-6).toUpperCase()}</span>
                             </div>
                         </div>
 
@@ -169,7 +169,7 @@ const LeadDetailPage = () => {
                             <button onClick={handleAdmit} className="w-full py-4 bg-emerald-500 text-black rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-emerald-400 transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2">
                                 <Check className="w-4 h-4" /> Join Student
                             </button>
-                            <button onClick={() => setIsEditModalOpen(true)} className="w-full py-4 bg-white/5 text-white rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-white/10 transition-all border border-white/10 flex items-center justify-center gap-2">
+                            <button onClick={() => setIsEditModalOpen(true)} className="w-full py-4 bg-[var(--bg-surface)] text-[var(--text-main)] rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-[var(--bg-card)] transition-all border border-[var(--border)] flex items-center justify-center gap-2">
                                 <Edit2 className="w-4 h-4" /> Edit Profile
                             </button>
                             <button onClick={() => setIsDeleteModalOpen(true)} className="w-full py-3 bg-rose-500/10 text-rose-500 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-rose-500 hover:text-white transition-all border border-rose-500/20 flex items-center justify-center gap-2">
@@ -183,48 +183,48 @@ const LeadDetailPage = () => {
                 <div className="lg:col-span-2 space-y-8">
                     {/* Personal Info */}
                     <div className="glass-card p-8 space-y-8">
-                        <div className="flex items-center gap-3 border-b border-white/5 pb-4">
+                        <div className="flex items-center gap-3 border-b border-[var(--border)] pb-4">
                             <Users className="w-5 h-5 text-emerald-500" />
-                            <h4 className="text-sm font-black text-white uppercase tracking-widest">Contact Information</h4>
+                            <h4 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest">Contact Information</h4>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div className="space-y-1">
-                                <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                <label className="text-[11px] font-black text-[var(--text-muted)] uppercase tracking-widest flex items-center gap-2">
                                     <Mail className="w-3 h-3" /> Email Address
                                 </label>
-                                <p className="text-lg font-bold text-slate-300 italic">{lead.email}</p>
+                                <p className="text-lg font-bold text-[var(--text-muted)] italic">{lead.email}</p>
                             </div>
                             <div className="space-y-1">
-                                <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                <label className="text-[11px] font-black text-[var(--text-muted)] uppercase tracking-widest flex items-center gap-2">
                                     <Phone className="w-3 h-3" /> Phone Number
                                 </label>
-                                <p className="text-lg font-bold text-slate-300 italic font-mono tracking-tight">{lead.phone}</p>
+                                <p className="text-lg font-bold text-[var(--text-muted)] italic font-mono tracking-tight">{lead.phone}</p>
                             </div>
                             <div className="space-y-1">
-                                <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                <label className="text-[11px] font-black text-[var(--text-muted)] uppercase tracking-widest flex items-center gap-2">
                                     <GraduationCap className="w-3 h-3" /> Interested Course
                                 </label>
                                 <p className="text-lg font-bold text-emerald-500">{lead.course}</p>
                             </div>
                             <div className="space-y-1">
-                                <label className="text-[11px] font-black text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                                <label className="text-[11px] font-black text-[var(--text-muted)] uppercase tracking-widest flex items-center gap-2">
                                     <Activity className="w-3 h-3" /> Engagement Status
                                 </label>
-                                <p className="text-lg font-bold text-slate-300">{lead.reply}</p>
+                                <p className="text-lg font-bold text-[var(--text-muted)]">{lead.reply}</p>
                             </div>
                         </div>
                     </div>
 
                     {/* Additional Details */}
                     <div className="glass-card p-8 space-y-8">
-                        <div className="flex items-center gap-3 border-b border-white/5 pb-4">
+                        <div className="flex items-center gap-3 border-b border-[var(--border)] pb-4">
                             <Sparkles className="w-5 h-5 text-emerald-500" />
-                            <h4 className="text-sm font-black text-white uppercase tracking-widest">Additional Information</h4>
+                            <h4 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest">Additional Information</h4>
                         </div>
 
-                        <div className="p-6 rounded-3xl bg-white/2 border border-white/5">
-                            <p className="text-slate-400 leading-relaxed italic">
+                        <div className="p-6 rounded-3xl bg-[var(--bg-surface)] border border-[var(--border)]">
+                            <p className="text-[var(--text-muted)] leading-relaxed italic">
                                 {lead.additionalInfo || "No additional notes or comments recorded for this lead yet."}
                             </p>
                         </div>
@@ -232,22 +232,22 @@ const LeadDetailPage = () => {
 
                     {/* Actions */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div onClick={handleAdmit} className="glass-card p-6 flex items-center gap-4 hover:bg-white/[0.04] transition-colors cursor-pointer group">
+                        <div onClick={handleAdmit} className="glass-card p-6 flex items-center gap-4 hover:bg-[var(--bg-card)] transition-colors cursor-pointer group">
                             <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-all">
                                 <IndianRupee className="w-6 h-6" />
                             </div>
                             <div>
-                                <h5 className="text-white font-black text-sm uppercase">Convert to Student</h5>
-                                <p className="text-slate-500 text-xs font-bold">Process admission and fees</p>
+                                <h5 className="text-[var(--text-main)] font-black text-sm uppercase">Convert to Student</h5>
+                                <p className="text-[var(--text-muted)] text-xs font-bold">Process admission and fees</p>
                             </div>
                         </div>
-                        <div className="glass-card p-6 flex items-center gap-4 hover:bg-white/[0.04] transition-colors cursor-pointer group">
+                        <div className="glass-card p-6 flex items-center gap-4 hover:bg-[var(--bg-card)] transition-colors cursor-pointer group">
                             <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-all">
                                 <Calendar className="w-6 h-6" />
                             </div>
                             <div>
-                                <h5 className="text-white font-black text-sm uppercase">Schedule Follow-up</h5>
-                                <p className="text-slate-500 text-xs font-bold">Set reminders for this lead</p>
+                                <h5 className="text-[var(--text-main)] font-black text-sm uppercase">Schedule Follow-up</h5>
+                                <p className="text-[var(--text-muted)] text-xs font-bold">Set reminders for this lead</p>
                             </div>
                         </div>
                     </div>
@@ -346,20 +346,20 @@ const LeadDetailPage = () => {
             {/* Admit Modal */}
             <Modal isOpen={isAdmitModalOpen} onClose={() => setIsAdmitModalOpen(false)} title="Convert Lead to Student" maxWidth="max-w-2xl">
                 <form onSubmit={confirmAdmit} className="space-y-10 pb-4">
-                    <div className="p-5 rounded-3xl bg-white/2 border border-white/5">
+                    <div className="p-5 rounded-3xl bg-[var(--bg-card)] border border-[var(--border)]">
                         <div>
-                            <h4 className="text-xl font-black text-white">{lead.name}</h4>
+                            <h4 className="text-xl font-black text-[var(--text-main)]">{lead.name}</h4>
                             <div className="flex items-center gap-2 mt-1">
-                                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Lead #{(lead._id || '0000').slice(-4)}</span>
+                                <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest">Lead #{(lead._id || '0000').slice(-4)}</span>
                                 <span className="px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-tighter">Ready to Join</span>
                             </div>
                         </div>
                     </div>
 
                     <div className="space-y-6">
-                        <div className="flex items-center gap-2 border-b border-white/5 pb-4">
+                        <div className="flex items-center gap-2 border-b border-[var(--border)] pb-4">
                             <GraduationCap className="w-5 h-5 text-emerald-500" />
-                            <h4 className="text-sm font-black text-white uppercase tracking-widest">Course Information</h4>
+                            <h4 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest">Course Information</h4>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
@@ -388,9 +388,9 @@ const LeadDetailPage = () => {
                     </div>
 
                     <div className="space-y-6">
-                        <div className="flex items-center gap-2 border-b border-white/5 pb-4">
+                        <div className="flex items-center gap-2 border-b border-[var(--border)] pb-4">
                             <Banknote className="w-5 h-5 text-emerald-500" />
-                            <h4 className="text-sm font-black text-white uppercase tracking-widest">Payment & Fees</h4>
+                            <h4 className="text-sm font-black text-[var(--text-main)] uppercase tracking-widest">Payment & Fees</h4>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
@@ -415,7 +415,7 @@ const LeadDetailPage = () => {
                     </div>
 
                     <div className="flex justify-end items-center gap-4 pt-4">
-                        <button type="button" onClick={() => setIsAdmitModalOpen(false)} className="px-8 py-3 rounded-2xl border border-white/10 text-slate-400 font-black text-sm hover:bg-white/5 transition-all">Cancel</button>
+                        <button type="button" onClick={() => setIsAdmitModalOpen(false)} className="px-8 py-3 rounded-2xl border border-[var(--border)] text-[var(--text-muted)] font-black text-sm hover:bg-[var(--bg-surface)] transition-all">Cancel</button>
                         <button type="submit" className="px-10 py-3 bg-emerald-500 text-black rounded-2xl font-black text-sm hover:bg-emerald-400 transition-all shadow-[0_0_25px_rgba(16,185,129,0.3)] flex items-center gap-2">
                             Go Live
                         </button>
@@ -426,11 +426,11 @@ const LeadDetailPage = () => {
             {/* Delete Modal */}
             <Modal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} title="Confirm Delete">
                 <div className="space-y-6">
-                    <p className="text-slate-400 leading-relaxed font-bold italic">
-                        Are you sure you want to delete <span className="text-white not-italic">{lead.name}</span>? This action is permanent and will remove all associated data.
+                    <p className="text-[var(--text-muted)] leading-relaxed font-bold italic">
+                        Are you sure you want to delete <span className="text-[var(--text-main)] not-italic">{lead.name}</span>? This action is permanent and will remove all associated data.
                     </p>
                     <div className="flex justify-end gap-3 pt-4">
-                        <button onClick={() => setIsDeleteModalOpen(false)} className="px-6 py-2 bg-white/5 text-white rounded-xl font-bold hover:bg-white/10 transition-all border border-white/10">Cancel</button>
+                        <button onClick={() => setIsDeleteModalOpen(false)} className="px-6 py-2 bg-[var(--bg-surface)] text-[var(--text-main)] rounded-xl font-bold hover:bg-[var(--bg-card)] transition-all border border-[var(--border)]">Cancel</button>
                         <button onClick={handleDeleteConfirm} className="px-6 py-2 bg-rose-500 text-white rounded-xl font-black hover:bg-rose-600 transition-all shadow-[0_0_20px_rgba(244,63,94,0.3)]">Delete Permanent</button>
                     </div>
                 </div>

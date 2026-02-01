@@ -119,17 +119,17 @@ const CoursesPage = () => {
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                    <h1 className="text-4xl font-black text-white tracking-tight">Course Management</h1>
-                    <p className="text-slate-500 mt-2 font-medium max-w-2xl">Manage course details, descriptions, and fee structures.</p>
+                    <h1 className="text-4xl font-black text-[var(--text-main)] tracking-tight">Course Management</h1>
+                    <p className="text-[var(--text-muted)] mt-2 font-medium max-w-2xl">Manage course details, descriptions, and fee structures.</p>
                 </div>
 
                 <div className="flex items-center gap-3">
                     <div className="relative">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4" />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] w-4 h-4" />
                         <input
                             type="text"
                             placeholder="Search courses..."
-                            className="bg-[#131b18] border border-white/5 rounded-2xl pl-12 pr-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/30 transition-all w-full md:w-64"
+                            className="bg-[var(--bg-surface)] border border-[var(--border)] rounded-2xl pl-12 pr-4 py-3 text-sm text-[var(--text-main)] focus:outline-none focus:border-emerald-500/30 transition-all w-full md:w-64"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
@@ -155,7 +155,7 @@ const CoursesPage = () => {
                                 </div>
                                 <button
                                     onClick={() => handleEditClick(course)}
-                                    className="p-2 rounded-lg bg-white/5 text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+                                    className="p-2 rounded-lg bg-[var(--bg-surface)] text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-card)] transition-all border border-[var(--border)]"
                                 >
                                     <Edit2 className="w-4 h-4" />
                                 </button>
@@ -170,18 +170,18 @@ const CoursesPage = () => {
                                 {course.description || "No description available."}
                             </p>
 
-                            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/5">
+                            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[var(--border)]">
                                 <div>
-                                    <p className="text-[10px] font-black text-slate-500 uppercase mb-1">Total Fee</p>
+                                    <p className="text-[10px] font-black text-[var(--text-muted)] uppercase mb-1">Total Fee</p>
                                     <p className="text-emerald-500 font-bold flex items-center gap-1">
                                         <IndianRupee className="w-3 h-3" />
                                         {course.fees?.total?.toLocaleString()}
                                     </p>
                                 </div>
                                 <div>
-                                    <p className="text-[10px] font-black text-slate-500 uppercase mb-1">Duration</p>
-                                    <p className="text-white font-bold flex items-center gap-1">
-                                        <Clock className="w-3 h-3 text-slate-500" />
+                                    <p className="text-[10px] font-black text-[var(--text-muted)] uppercase mb-1">Duration</p>
+                                    <p className="text-[var(--text-main)] font-bold flex items-center gap-1">
+                                        <Clock className="w-3 h-3 text-[var(--text-muted)]" />
                                         {course.duration?.value} {course.duration?.unit}
                                     </p>
                                 </div>
@@ -196,7 +196,7 @@ const CoursesPage = () => {
                 <form onSubmit={handleUpdate} className="space-y-6">
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1">Course Name</label>
+                            <label className="text-xs font-bold text-[var(--text-muted)] uppercase ml-1">Course Name</label>
                             <input
                                 type="text"
                                 className="input-field"
@@ -206,7 +206,7 @@ const CoursesPage = () => {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1">Course Code</label>
+                            <label className="text-xs font-bold text-[var(--text-muted)] uppercase ml-1">Course Code</label>
                             <input
                                 type="text"
                                 className="input-field"
@@ -218,9 +218,9 @@ const CoursesPage = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-slate-500 uppercase ml-1">Description</label>
+                        <label className="text-xs font-bold text-[var(--text-muted)] uppercase ml-1">Description</label>
                         <textarea
-                            className="w-full bg-[#0a0f0d] border border-white/10 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-emerald-500/50 min-h-[120px]"
+                            className="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-xl p-4 text-sm text-[var(--text-main)] focus:outline-none focus:border-emerald-500/50 min-h-[120px]"
                             value={editForm.description}
                             onChange={(e) => setEditForm({ ...editForm, description: e.target.value })}
                             placeholder="Enter course description..."
@@ -229,7 +229,7 @@ const CoursesPage = () => {
 
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1">Total Fee (₹)</label>
+                            <label className="text-xs font-bold text-[var(--text-muted)] uppercase ml-1">Total Fee (₹)</label>
                             <input
                                 type="number"
                                 className="input-field"
@@ -239,7 +239,7 @@ const CoursesPage = () => {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1">Duration</label>
+                            <label className="text-xs font-bold text-[var(--text-muted)] uppercase ml-1">Duration</label>
                             <div className="flex gap-2">
                                 <input
                                     type="number"
@@ -276,7 +276,7 @@ const CoursesPage = () => {
                 <form onSubmit={handleAddCourse} className="space-y-6">
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1">Course Name</label>
+                            <label className="text-xs font-bold text-[var(--text-muted)] uppercase ml-1">Course Name</label>
                             <input
                                 type="text"
                                 className="input-field"
@@ -287,7 +287,7 @@ const CoursesPage = () => {
                             />
                         </div>
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1">Course Code</label>
+                            <label className="text-xs font-bold text-[var(--text-muted)] uppercase ml-1">Course Code</label>
                             <input
                                 type="text"
                                 className="input-field"
@@ -300,9 +300,9 @@ const CoursesPage = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-xs font-bold text-slate-500 uppercase ml-1">Description</label>
+                        <label className="text-xs font-bold text-[var(--text-muted)] uppercase ml-1">Description</label>
                         <textarea
-                            className="w-full bg-[#0a0f0d] border border-white/10 rounded-xl p-4 text-sm text-white focus:outline-none focus:border-emerald-500/50 min-h-[120px]"
+                            className="w-full bg-[var(--bg-main)] border border-[var(--border)] rounded-xl p-4 text-sm text-[var(--text-main)] focus:outline-none focus:border-emerald-500/50 min-h-[120px]"
                             value={addForm.description}
                             onChange={(e) => setAddForm({ ...addForm, description: e.target.value })}
                             placeholder="Enter course description..."
@@ -311,7 +311,7 @@ const CoursesPage = () => {
 
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
-                            <label className="text-xs font-bold text-slate-500 uppercase ml-1">Total Fee (₹)</label>
+                            <label className="text-xs font-bold text-[var(--text-muted)] uppercase ml-1">Total Fee (₹)</label>
                             <input
                                 type="number"
                                 className="input-field"
