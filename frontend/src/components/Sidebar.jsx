@@ -25,9 +25,11 @@ const Sidebar = ({ isOpen, onClose, theme, onToggleTheme }) => {
     return (
         <div className={`fixed inset-y-0 left-0 z-50 w-72 bg-[var(--bg-sidebar)] border-r border-[var(--border)] flex flex-col transition-transform duration-300 transform lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
             <div className="px-8 py-10">
-                <div className={`inline-flex items-center justify-center transition-all duration-300 ${theme === 'light' ? 'bg-[#0d1210] p-3 rounded-2xl shadow-xl border border-slate-200' : ''}`}>
-                    <img src={logo} alt="Logo" className={`${theme === 'light' ? 'h-8' : 'h-12'} w-auto object-contain transition-all duration-300`} />
-                </div>
+                <img
+                    src={logo}
+                    alt="Logo"
+                    className={`h-12 w-auto object-contain transition-all duration-300 ${theme === 'light' ? 'brightness-0 invert' : ''}`}
+                />
             </div>
 
             <nav className="flex-1 px-4 space-y-1">
