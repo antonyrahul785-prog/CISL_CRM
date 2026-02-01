@@ -168,11 +168,11 @@ const CoursesPage = () => {
                             </div>
 
                             <div>
-                                <h3 className="text-xl font-bold text-white mb-1">{course.name}</h3>
-                                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">{course.courseCode}</p>
+                                <h3 className="text-xl font-bold text-[var(--text-main)] mb-1">{course.name}</h3>
+                                <p className="text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider">{course.courseCode}</p>
                             </div>
 
-                            <p className="text-slate-400 text-sm line-clamp-3 h-[60px]">
+                            <p className="text-[var(--text-muted)] text-sm line-clamp-3 h-[60px]">
                                 {course.description || "No description available."}
                             </p>
 
