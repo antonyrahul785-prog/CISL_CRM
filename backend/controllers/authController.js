@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const signToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET || 'your-very-secret-key-12345', {
-        expiresIn: '7d'
+        expiresIn: '3h'
     });
 };
 
